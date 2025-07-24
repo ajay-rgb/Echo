@@ -3,13 +3,10 @@ import React from 'react';
 import {useState, useEffect, useRef } from 'react';
 
 
-export default function Timer(){
+export default function Timer({onReset}){
 
-   const formatTime = (time) => {
-  // Convert total milliseconds to total seconds
+const formatTime = (time) => {
   const totalSeconds = Math.floor(time / 1000);
-
-  // Calculate hours, minutes, and remaining seconds
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
@@ -28,6 +25,8 @@ export default function Timer(){
     }
 
     const handleReset=()=>{
+        onReset(formatTime(time));
+        // Reset the timer
         setTime(0);
         setIsRunning(false);
     }
