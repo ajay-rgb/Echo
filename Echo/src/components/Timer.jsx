@@ -1,74 +1,35 @@
-
+// src/components/Timer.jsx
 import React from 'react';
-import {useState, useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
+import { useTimer } from '../hooks/useTimer'; // Import your custom hook
 
+export default function Timer({ onReset }) {
+  // Call the hook to get all the logic
+  const { time, isRunning, handleStartStop, handleReset, formatTime } = useTimer(onReset);
+  const {theme}=useTheme();
 
-export default function Timer({onReset}){
+  const timerBgClass = theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-black';
 
-const formatTime = (time) => {
-  const totalSeconds = Math.floor(time / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-
-  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-};
-
-// :${String(milliseconds).padStart(2, '0')}
-
-
-    const [time, setTime] = useState(0);
-    const [isrunning, setIsRunning] = useState(false);
-
-    const handleStartStop = ()=>{
-        setIsRunning(!isrunning);
-    }
-
-    const handleReset=()=>{
-        onReset(formatTime(time));
-        // Reset the timer
-        setTime(0);
-        setIsRunning(false);
-    }
-
-    useEffect(()=>{
-        let id
-        if(isrunning){
-            id = setInterval(()=>{
-            setTime(prev => prev+100);
-        }, 100)
-        }
-        return(
-            () => {
-                clearInterval(id);
-            }
-        );
-
-    }, [isrunning]);
-
-    
-
-    return(
-        <div className="flex flex-col items-center justify-center h-[300px] w-[200px] bg-gray-100 border-2 border-black rounded-[20px]">
-            <h3 className="text-black text-2xl font-bold p-4 border-b-2 border-black">Timer</h3>
-            <h1 
-            className='text-black text-4xl font-bold p-4'
-            >{formatTime(time)}</h1>
-
-            <div
-            className='flex flex-row gap-4 p-4'
-            >
-                <button
-            className='bg-[#9ED6DF] border-2 border-black text-black px-4 py-2 rounded-lg hover:bg-pink-600 hover:translate-y-[3px] transition duration-300'
-            onClick={handleStartStop}
-            >{isrunning?'Stop':'Start'}</button>
-
-            <button
-            className='bg-[#9ED6DF] border-2 border-black text-black px-4 py-2 rounded-lg hover:bg-pink-600 hover:translate-y-[3px] transition duration-300'
-            onClick={handleReset}
-            >{'Reset'}</button>
-            </div>
-
-        </div>
-    );
+  return (
+    <div className={` bg-[var(--cardclr)] flex flex-col items-center justify-center h-full w-2/4 p-4 shadow-md rounded-[10px]`}>
+      <h3 className={`text-[var(--primary)] text-1xl font-bold p-4`}>Timer</h3>
+      <h1 className='text-black text-2xl font-bold p-4'>
+        {formatTime(time)}
+      </h1>
+      <div className='flex flex-row gap-4 p-4'>
+        <button
+          className='bg-[var(--primary)]  text-white px-2 py-1 rounded-lg hover:bg-pink-600'
+          onClick={handleStartStop}
+        >
+          {isRunning ? 'Stop' : 'Start'}
+        </button>
+        <button
+          className='bg-[#c883e7]  text-white px-2 py-1 rounded-lg hover:bg-pink-600'
+          onClick={handleReset}
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  );
 }

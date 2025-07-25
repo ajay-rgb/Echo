@@ -3,5 +3,19 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
+  --primary: #5955b3; /* Primary color */
+  --secondary: white; /* Secondary color */
+  --cardclr: #f1e9f9; /* Background color */
+  --text-color: #000; /* Text color */
 }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 
