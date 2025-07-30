@@ -1,14 +1,31 @@
 
 import Header from '../components/Header';
+import RightSidebar from '../components/RightSidebar.jsx';
+import Sidebar from '../components/Sidebar.jsx';
+
 
 export default function About() {
-    
 
-    return(
-        <div className='bg-blue-500 h-screen w-screen flex flex-col items-center justify-center text-white p-4'>
-            <Header />
-            <h1 className='text-3xl font-bold text-white'>About Page</h1>
-            <p className='mt-4'>This is the about page of our application.</p>
+  return (
+    // This top-level container should fill its parent (the Layout)
+    <div className='flex flex-row h-full w-full'>
+      <Sidebar />
+      
+      {/* Main Content Column */}
+      <div className='flex flex-col w-full h-full'>
+        <Header />
+        <div
+        className='bg-[var(--secondary)] flex flex-col flex-grow p-4 gap-4 min-h-0 rounded-bl-lg'>
+
+            <h1 className='text-black'>Welcome to Echo</h1>
+
+
         </div>
-    );
+      </div>
+
+      
+      
+      <RightSidebar />
+    </div>
+  );
 }

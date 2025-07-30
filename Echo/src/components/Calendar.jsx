@@ -1,11 +1,22 @@
 
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
 
+export default function MyCalendar() {
 
-export default function Calendar() {
+    const[date, setDate] = useState(new Date());
+
     return (
-        <div className="bg-white p-4 rounded-lg shadow-lg h-1/2 w-full">
-            <h2 className="text-xl font-bold mb-4">Calendar</h2>
-            {/* Calendar content goes here */}
+        <div className="bg-white rounded-lg hover:shadow-lg h-full w-full flex flex-col justify-between items-center">
+
+           
+                <Calendar
+                onChange= {setDate}
+                value={date}
+                className="h-full text-[var(--primary)] rounded-lg  p-0 m-0 border-none scale-80"
+                />
+            
+            
         </div>
     );
 }

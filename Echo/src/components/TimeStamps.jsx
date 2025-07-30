@@ -1,17 +1,24 @@
 import React from 'react';
 import TimeCard from "./TimeCard";
 
-export default function TimeStamps({ savedStamp, onDelete }) {
+export default function TimeStamps({ savedStamp=[], onDelete }) {
   return (
-    // This container fills its parent and will scroll its content when it overflows.
-    <div className="bg-[var(--cardclr)] flex flex-col items-center h-full w-full shadow-md rounded-lg p-4 overflow-y-auto no-scrollbar">
-      {savedStamp.map((time, index) => (
-        <TimeCard
-          key={index}
-          time={time}
-          onDelete={() => onDelete(index)}
-        />
-      ))}
+    <div className="bg-[var(--cardclr)] flex flex-col items-center h-full w-full shadow-md rounded-lg overflow-y-auto no-scrollbar">
+      {savedStamp.length > 0 ? (
+        // If there are stamps, map over them
+        savedStamp.map((time, index) => (
+          <TimeCard
+            key={index}
+            time={time}
+            onDelete={() => onDelete(index)}
+          />
+        ))
+      ) : (
+        // Otherwise, show a placeholder message
+        <div className="m-auto text-white opacity-50">
+          No timestamps saved yet.
+        </div>
+      )}
     </div>
   );
 }

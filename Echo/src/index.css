@@ -18,4 +18,81 @@
     scrollbar-width: none;  /* Firefox */
 }
 
+/* --- MAIN CALENDAR CONTAINER --- */
+.react-calendar {
+  width: 100%; /* Allow it to fill the sidebar width */
+  background: white;
+  border: none;
+  font-family: Helvetica, sans-serif;
+  padding: 0.5rem; /* Reduced padding */
+}
+.react-calendar__navigation__label abbr {
+  text-decoration: none;
+}
+/* --- NAVIGATION BAR --- */
+.react-calendar__navigation {
+  height: 30px; /* Reduced height */
+  margin-bottom: 0.5em;
+}
+.react-calendar__navigation button {
+  min-width: 30px; /* Smaller buttons */
+  font-size: 16px;
+}
+.react-calendar__navigation__label {
+  font-weight: bold;
+  font-size: 1rem; /* Reduced font size */
+}
 
+/* --- WEEKDAY ABBREVIATIONS --- */
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.65em; /* Reduced font size */
+  color: #a0a095;
+}
+
+/* --- DAY TILES --- */
+.react-calendar__tile {
+  background: none;
+  text-align: center;
+  border: none;
+  height: 35px; /* Smaller tiles */
+  font-size: 0.8rem; /* Reduced font size for the numbers */
+  border-radius: 6px;
+}
+.react-calendar__tile--active {
+  background: #6f48eb;
+  color: white;
+}
+
+/* --- STYLES FOR DAYS FROM NEIGHBORING MONTHS --- */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #d1d1d1;
+}
+
+/* --- MAIN NAVIGATION CONTAINER --- */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between; /* Pushes label left, buttons right */
+  align-items: center;
+}
+
+/* --- HIDE THE UNWANTED "DOUBLE ARROW" BUTTONS --- */
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+
+/* --- STYLE AND GROUP THE REMAINING ARROW BUTTONS --- */
+/* Style for the previous month button */
+.react-calendar__navigation__prev-button {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-right: none; /* Remove right border to merge with the next button */
+}
+
+/* Style for the next month button */
+.react-calendar__navigation__next-button {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}

@@ -12,27 +12,10 @@ export default function Header(){
 
         <nav className='flex flex-row items-center '>
             <button onClick={toggleTheme}
-            className='bg-[var(--primary)] text-white px-2 py-1 rounded-lg hover:bg-pink-600 mr-4'>
+            className='bg-[var(--primary)] text-[12px] text-white px-2 py-1 rounded-md hover:bg-pink-600 mr-4'>
                 {theme === 'light' ? 'Dark' : 'Light'}
             </button>
-            <ul className='flex flex-row gap-4'>
-                <li>
-                <NavLink 
-                    to='/'
-                    className={({ isActive }) => isActive ? "font-bold text-[var(--primary)]" : ""}
-                >
-                    Home
-                </NavLink>
-                </li>
-                <li>
-                <NavLink 
-                    to='/about'
-                    className={({ isActive }) => isActive ? "font-bold text-[var(--primary)]" : ""}
-                >
-                    About
-                </NavLink>
-                </li>
-            </ul>
+            
         </nav>
 
 
