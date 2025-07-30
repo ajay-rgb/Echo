@@ -37,7 +37,7 @@ export function useTimer(onResetCallback) {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${String((time % 1000) / 10).padStart(2, '0')}`;
   };
 
   // Return the state and functions the component will need
