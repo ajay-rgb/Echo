@@ -13,8 +13,8 @@ export default function Quote() {
     // Removed unnecessary layout classes like h-full and flex-grow
     <div className="rounded-lg w-full p-2">
       <blockquote>
-        <p className="italic text-violet-200 text-left text-sm">"{quote.text}"</p>
-        <footer className="text-right mt-2 font-semibold text-violet-200 text-xs">- {quote.author || 'Unknown'}</footer>
+        <p className="italic text-[10px] text-left text-sm">"{quote.text}"</p>
+        <footer className="text-right mt-2 text-[10px] font-semibold text-xs">- {quote.author || 'Unknown'}</footer>
       </blockquote>
 
       <div className='flex flex-row justify-between items-center mt-8 p-2 border-t border-white'>

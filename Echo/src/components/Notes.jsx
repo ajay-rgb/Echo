@@ -5,7 +5,7 @@ export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [input, setInput] = useState('');
   const apiUrl = 'https://psychic-giggle-6jgjvq55wqjf45r9-3000.app.github.dev';
-
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -27,7 +27,7 @@ export default function Notes() {
         method: 'DELETE',
       });
       
-      setNotes(prevNotes => prevNotes.filter(note =>note.id!== idToDelete))
+      setNotes(prevNotes => prevNotes.filter(note =>note._id!== idToDelete))
     }catch(error){
       console.error("failed to delete note:", error);
     }
@@ -40,6 +40,7 @@ export default function Notes() {
         method: 'POST',
         headers:{
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body : JSON.stringify({text: input}),
       });
@@ -58,7 +59,7 @@ export default function Notes() {
   }
 
   return (
-    <div className="h-full w-full bg-yellow-200 p-4 rounded-lg shadow-lg flex flex-col">
+    <div className="h-full w-full notes-card p-4 rounded-lg shadow-lg flex flex-col scale-95">
       <div className="flex flex-row items-center justify-between mb-4">
         <input
           value={input}
@@ -71,7 +72,7 @@ export default function Notes() {
         <button
           type="button"
           onClick={handleAddNote}
-          className="bg-[var(--primary)] text-white p-3 rounded-full hover:bg-blue-600"
+          className="bg-[var(--dark-bg)] text-white p-3 rounded-full hover:bg-blue-600"
         >
           +
         </button>
@@ -79,10 +80,10 @@ export default function Notes() {
 
       <div className="flex-grow overflow-y-auto min-h-0 no-scrollbar">
         {notes.map((note) => (
-          <div key={note.id} className="flex items-center justify-between p-2 mb-2 font-bold border-b border-gray-800">
-            <p className="text-black break-words mr-2">{note.text}</p>
-            <button className='text-red-400 text-[12px]'
-            onClick={()=>{handleDelete(note.id)}}
+          <div key={note._id} className="flex items-center justify-between p-2 mb-2 font-bold border-b border-gray-800">
+            <p className="text-[var(--dark-bg)] break-words mr-2">{note.text}</p>
+            <button className='text-[var(--dark-bg)] text-[12px]'
+            onClick={()=>{handleDelete(note._id)}}
             ><FaTrash/></button>
           </div>
         ))}

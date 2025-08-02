@@ -9,11 +9,9 @@ export default function Dashboard() {
   return (
     // This top-level container should fill its parent (the Layout)
     <div className='flex flex-row h-full w-full'>
-      <Sidebar />
       
       {/* Main Content Column */}
       <div className='flex flex-col w-full h-full'>
-        <Header />
         
         {/* This container will now grow to fill available vertical space */}
         <div className='bg-[var(--secondary)] flex flex-col flex-grow p-4 gap-4 min-h-0 rounded-bl-lg'>

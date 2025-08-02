@@ -1,37 +1,54 @@
+// src/Layout.jsx
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import RightSidebar from './components/RightSidebar';
+import { useTheme } from './context/ThemeContext';
 
-import {Route, Routes, Link} from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Dashboard from './pages/Dashboard'
-import Community from './pages/Community'
-import Login from './pages/Login'
-import {useTheme} from './context/ThemeContext';
+export default function Layout() {
+  const { theme } = useTheme();
+  const mainBgClass = theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100';
 
-function Layout(){
+  const [timeStamp, setTimeStamp] = useState(() => {
+    // ... your localStorage logic ...
+    const savedData = localStorage.getItem('myTimeStamps');
+    return savedData ? JSON.parse(savedData) : [];
+  });
 
-    const {theme} = useTheme();
-    const mainBgClass = theme === 'dark'? 'bg-gray-900 text-white' : 'bg-[var(--primary)] text-white';
+  useEffect(() => {
+    localStorage.setItem('myTimeStamps', JSON.stringify(timeStamp));
+  }, [timeStamp]);
 
-    return(
-        <div 
-        className={`${mainBgClass} h-screen w-screen p-2  `}>
+  const handleAddTimeStamp = (time) => {
+    setTimeStamp(prev => [time, ...prev]);
+  };
 
-   
+  const handleDeleteTimeStamp = (indexToDelete) => {
+    setTimeStamp(prev => prev.filter((_, index) => index !== indexToDelete));
+  };
 
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/about' element={<About/>}/>
-                <Route path='/dashboard' element={<Dashboard/>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/community' element={<Community/>}/>
-            </Routes>
+  const location = useLocation();
+  const hideSidebarOn = ['/login', '/community', '/about', '/dashboard'];
 
-            {/* <div className='bg-[#EAE4DA] w-11/12 h-11/12 rounded-[50px] p-6 border-2 border-black flex justify-center'>
-                <Home/>
-            </div> */}
-            
-        </div>
-    );
+  return (
+    <div className={`flex flex-row h-screen w-screen bg-[var(--dark-bg)] `}>
+      <Sidebar />
+
+      <div className='flex flex-col w-full h-full'>
+        <Header />
+        {/* The Outlet will render the current page (Home, About, etc.) */}
+        {/* We pass props to the pages via the context prop */}
+        <Outlet context={{
+          timeStamp,
+          handleAddTimeStamp,
+          handleDeleteTimeStamp
+        }} />
+      </div>
+       {(location.pathname !== '/login' && location.pathname !== '/community' 
+            && location.pathname!=='/about' && location.pathname !== '/dashboard'
+       ) && <RightSidebar />}
+
+    </div>
+  );
 }
-
-export default Layout;
