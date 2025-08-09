@@ -7,16 +7,16 @@ export default function Sidebar() {
   const mainBgClass = theme === 'dark' ? 'bg-[var(--dark-bg)] text-white' : 'bg-[var(--primary)] text-white';
 
   return (
-    <div className={`bg-[var(--dark-bg)] w-3/12 h-full p-4 flex flex-col`}>
-      <h1 className='text-3xl font-bold text-left text-white mb-4'>Echo</h1>
+    <div className={`bg-gray-100 w-3/12 h-full p-4  flex flex-col`}>
+      <h1 className='text-3xl font-bold text-left text-black mb-4'>Echo</h1>
 
       <div className="flex-grow w-full my-2">
-        <ul className="flex flex-col gap-2 w-full text-left text-[12px]">
+        <ul className="flex flex-col gap-2 text-black w-full text-left text-[12px]">
           <li>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `block p-2 rounded ${isActive ? 'font-bold text-white' : ''}`
+                `block p-2 rounded ${isActive ? 'font-bold text-[var(--primary-txt)]' : ''}`
               }
             >
               Home
@@ -32,7 +32,7 @@ export default function Sidebar() {
               About
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
@@ -41,7 +41,7 @@ export default function Sidebar() {
             >
               Dashboard
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               to="/login"

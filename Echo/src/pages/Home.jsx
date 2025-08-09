@@ -13,7 +13,7 @@ export default function Home() {
     <div className='bg-[var(--dark-bg)] flex flex-col flex-grow p-4 gap-4 min-h-0 rounded-bl-lg'>
       <div className='flex flex-row justify-center items-center gap-4'>
         <Progress />
-        <Timer onReset={handleAddTimeStamp} />
+        <Timer />
       </div>
       <div className='w-full flex-grow min-h-0 bg-[#222823] rounded-lg  '>
         <TimeStamps savedStamp={timeStamp} onDelete={handleDeleteTimeStamp} />

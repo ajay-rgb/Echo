@@ -6,99 +6,39 @@
   background: #000000;
   --primary: #151415; /* Primary color */
   --secondary: #151415; /* Secondary color */ /* Text color */
-  --dark-bg:#151415;
-  --primary-txt:#37BD96;
+  --dark-bg:white;
+  --primary-txt:#24A67A;
 }
 
-/* .card-bg{
-background: linear-gradient(to right, #042f2e, #088B5B,#011B1C);
-border: #09bc8a 1px solid;
-} */
+
 .card-bg{
-   background: radial-gradient(
+   /* background: radial-gradient(
     circle at 30% 30%,
     rgba(0, 255, 136, 0.15),
     rgba(0, 85, 51, 0.6),
     #001a11
-  );
+  ); */
+
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .timer-card{
-  background: radial-gradient(
-    circle at 30% 30%,
-    #47FB8D,
-    #066037
-  );
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: rgb(255, 255, 255);
 }
 
 .timestamp-card{
-   background: radial-gradient(
-    circle at 5% 30%,
-    #003623,
-        #0b3923,
-        #151415
-
-  );
+   background: white;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .notes-card{
-  background:rgb(244, 255, 250); 
+  background:rgb(255, 255, 255); 
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.glass-card {
-  width: 240px;
-  height: 360px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 20px 10px rgba(255, 255, 255, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.8),
-    transparent
-  );
-}
-
-.glass-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.8),
-    transparent,
-    rgba(255, 255, 255, 0.3)
-  );
-}
 
 .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -111,8 +51,8 @@ border: #09bc8a 1px solid;
 
 .react-calendar {
   width: 100%; /* Allow it to fill the sidebar width */
-  background: #151415;
-  color:white;
+  background: #ffffff;
+  color:rgb(0, 0, 0);
   border: none;
   font-family: Helvetica, sans-serif;
   padding: 0.5rem; /* Reduced padding */
@@ -140,18 +80,18 @@ border: #09bc8a 1px solid;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.5em; /* Reduced font size */
-  color: #a0a095;
+  color: #acacac;
 }
 
 /* --- DAY TILES --- */
 .react-calendar__tile {
-  margin-top: 10px;
+  margin-top: 7px;
   background: none;
   text-align: center;
   border: none;
   height: 30px; /* Smaller tiles */
   font-size: 0.7rem; /* Reduced font size for the numbers */
-  border-radius: 6px;
+  
 }
 .react-calendar__tile--active {
   background: #09bc8a;
@@ -189,3 +129,11 @@ border: #09bc8a 1px solid;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+
+
+/* In src/index.css */
+.react-calendar-heatmap .color-empty { fill: #eeeeee; }
+.react-calendar-heatmap .color-scale-1 { fill: #d6e685; }
+.react-calendar-heatmap .color-scale-2 { fill: #8cc665; }
+.react-calendar-heatmap .color-scale-3 { fill: #44a340; }
+.react-calendar-heatmap .color-scale-4 { fill: #1e6823; }

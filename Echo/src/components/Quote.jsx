@@ -13,7 +13,7 @@ export default function Quote() {
     // Removed unnecessary layout classes like h-full and flex-grow
     <div className="rounded-lg w-full p-2">
       <blockquote>
-        <p className="italic text-[10px] text-left text-sm">"{quote.text}"</p>
+        <p className="italic text-[10px] text-left text-black text-sm">"{quote.text}"</p>
         <footer className="text-right mt-2 text-[10px] font-semibold text-xs">- {quote.author || 'Unknown'}</footer>
       </blockquote>
 

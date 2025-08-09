@@ -64,13 +64,13 @@ export default function Login() {
 
   if (user) {
     return (
-      <div className='flex flex-col items-center justify-center h-full w-full bg-[var(--primary)] text-white p-4 text-center'>
+      <div className='flex flex-col items-center justify-center h-full w-full bg-white text-black p-4 text-center'>
         <h1 className='text-3xl font-bold mb-4'>Welcome back, {user.username}!</h1>
         <div className="flex gap-4">
-          <Link to="/" className='bg-blue-500 text-white p-2 rounded hover:bg-blue-600'>
+          <Link to="/" className='bg-blue-500  px-4 py-2 rounded-full hover:bg-blue-600'>
             Go to Home
           </Link>
-          <button onClick={handleLogout} className='bg-red-500 text-white p-2 rounded hover:bg-red-600'>
+          <button onClick={handleLogout} className='bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600'>
             Logout
           </button>
         </div>
@@ -79,7 +79,7 @@ export default function Login() {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center h-full w-full bg-[var(--primary)] text-white p-4'>
+    <div className='flex flex-col items-center justify-center h-full w-full bg-white text-black p-4'>
       <h1 className='text-3xl font-bold mb-4'>{isLoginMode ? 'Login' : 'Register'}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4 w-full max-w-sm'>
         <input

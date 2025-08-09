@@ -1,63 +1,75 @@
-import React, { useState, useEffect } from 'react';
-import {FaTrash} from 'react-icons/fa';
+import React, { useState, useEffect, useContext } from 'react';
+import { FaTrash } from 'react-icons/fa';
+import UserContext from '../context/userContext';
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [input, setInput] = useState('');
   const apiUrl = 'https://psychic-giggle-6jgjvq55wqjf45r9-3000.app.github.dev';
-  const token = localStorage.getItem('token');
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/api/notes`);
-        const data = await response.json();
-        setNotes(data); 
-      } catch (error) {
-        console.error("Failed to fetch notes:", error);
-      }
-    };
+    if (user) {
+      const fetchNotes = async () => {
+        const token = localStorage.getItem('token');
+        try {
+          const response = await fetch(`${apiUrl}/api/notes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          const data = await response.json();
+          setNotes(data);
+        } catch (error) {
+          console.error("Failed to fetch notes:", error);
+        }
+      };
+      fetchNotes();
+    } else {
+      // FIX 2: Clear notes when the user logs out
+      setNotes([]);
+    }
+  }, [user]);
 
-    fetchNotes();
-  }, []); 
-
-  const handleDelete = async(idToDelete)=>{
-    try{
-      await fetch(`${apiUrl}/api/notes/${idToDelete}`,{
+  const handleDelete = async (idToDelete) => {
+    const token = localStorage.getItem('token');
+    try {
+      await fetch(`${apiUrl}/api/notes/${idToDelete}`, {
         method: 'DELETE',
+        headers: {
+          // FIX 1: Add the Authorization header
+          'Authorization': `Bearer ${token}`
+        }
       });
-      
-      setNotes(prevNotes => prevNotes.filter(note =>note._id!== idToDelete))
-    }catch(error){
+      setNotes(prevNotes => prevNotes.filter(note => note._id !== idToDelete));
+    } catch (error) {
       console.error("failed to delete note:", error);
     }
   };
 
-  const handleAddNote = async()=>{
-    if(input.trim()==='') return;
-    try{
-      const response = await fetch(`${apiUrl}/api/notes`,{
+  const handleAddNote = async () => {
+    const token = localStorage.getItem('token');
+    if (input.trim() === '') return;
+    try {
+      const response = await fetch(`${apiUrl}/api/notes`, {
         method: 'POST',
-        headers:{
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body : JSON.stringify({text: input}),
+        body: JSON.stringify({ text: input }),
       });
       const newNote = await response.json();
       setNotes(prevNote => [newNote, ...prevNote]);
-    }catch(error){
+      setInput(''); // Clear input after successful add
+    } catch (error) {
       console.error("Failed to add note:", error);
     }
-  }
+  };
 
-  const handleKeyDown = (e)=>{
-    if(e.key === 'Enter' && input.trim()!==''){
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
       handleAddNote();
-      setInput('');
     }
-  }
-
+  };
   return (
     <div className="h-full w-full notes-card p-4 rounded-lg shadow-lg flex flex-col scale-95">
       <div className="flex flex-row items-center justify-between mb-4">
@@ -72,7 +84,7 @@ export default function Notes() {
         <button
           type="button"
           onClick={handleAddNote}
-          className="bg-[var(--dark-bg)] text-white p-3 rounded-full hover:bg-blue-600"
+          className="bg-gray-200 text-black p-3 h-full rounded-full hover:bg-gray-300"
         >
           +
         </button>
@@ -81,8 +93,8 @@ export default function Notes() {
       <div className="flex-grow overflow-y-auto min-h-0 no-scrollbar">
         {notes.map((note) => (
           <div key={note._id} className="flex items-center justify-between p-2 mb-2 font-bold border-b border-gray-800">
-            <p className="text-[var(--dark-bg)] break-words mr-2">{note.text}</p>
-            <button className='text-[var(--dark-bg)] text-[12px]'
+            <p className="text-black break-words mr-2">{note.text}</p>
+            <button className='text-black text-[12px]'
             onClick={()=>{handleDelete(note._id)}}
             ><FaTrash/></button>
           </div>

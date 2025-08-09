@@ -3,11 +3,11 @@ import { FaStopwatch, FaStickyNote, FaChartBar } from 'react-icons/fa';
 
 export default function About() {
   return (
-    <div className="flex-grow p-8 bg-[var(--secondary)] text-gray-800 overflow-y-auto">
+    <div className="flex-grow p-8 bg-white text-gray-800 overflow-y-auto">
       <div className="max-w-4xl mx-auto">
         
         <h1 className="text-4xl font-bold text-center mb-4 text-[var(--primary-txt)]">About Echo</h1>
-        <p className="text-lg text-center text-gray-200 mb-12">
+        <p className="text-lg text-center text-gray-500 mb-12">
           Your Personal Productivity Companion
         </p>
 
