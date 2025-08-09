@@ -65,9 +65,9 @@ export default function Login() {
   if (user) {
     return (
       <div className='flex flex-col items-center justify-center h-full w-full bg-white text-black p-4 text-center'>
-        <h1 className='text-3xl font-bold mb-4'>Welcome back, {user.username}!</h1>
+        <h1 className='text-3xl font-bold mb-10'>Welcome, {user.username}!</h1>
         <div className="flex gap-4">
-          <Link to="/" className='bg-blue-500  px-4 py-2 rounded-full hover:bg-blue-600'>
+          <Link to="/" className='bg-[var(--primary-txt)]  px-4 py-2 rounded-full hover:bg-blue-600'>
             Go to Home
           </Link>
           <button onClick={handleLogout} className='bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600'>
@@ -85,7 +85,7 @@ export default function Login() {
         <input
           type='text'
           placeholder='Username'
-          className='p-2 rounded bg-gray-200 text-black'
+          className='p-2 text-black bg-white rounded-full border-black border-1'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -93,12 +93,12 @@ export default function Login() {
         <input
           type='password'
           placeholder='Password'
-          className='p-2 rounded bg-gray-200 text-black'
+          className='p-2 text-black bg-white rounded-full border-black border-1'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type='submit' className='bg-blue-500 text-white p-2 rounded hover:bg-blue-600'>
+        <button type='submit' className='bg-[var(--primary-txt)] rounded-full text-white p-2 rounded hover:bg-green-500'>
           {isLoginMode ? 'Login' : 'Register'}
         </button>
         {message && <p className="mt-4 text-center text-red-300">{message}</p>}
@@ -106,7 +106,7 @@ export default function Login() {
       <button 
         type="button" 
         onClick={() => setIsLoginMode(!isLoginMode)} 
-        className="w-full mt-4 text-center text-sm text-gray-300 hover:underline"
+        className="w-full mt-4 text-center text-sm text-gray-500 hover:underline"
       >
         {isLoginMode ? 'Need an account? Register' : 'Already have an account? Login'}
       </button>

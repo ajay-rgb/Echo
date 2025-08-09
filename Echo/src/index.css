@@ -6,8 +6,9 @@
   background: #000000;
   --primary: #151415; /* Primary color */
   --secondary: #151415; /* Secondary color */ /* Text color */
-  --dark-bg:white;
-  --primary-txt:#24A67A;
+  --dark-bg:#eeeeee;
+  --card: #b7e4c7;
+  --primary-txt:#3dac78;
 }
 
 
@@ -23,9 +24,6 @@
   background-size: cover;
 }
 
-.timer-card{
-  background: rgb(255, 255, 255);
-}
 
 .timestamp-card{
    background: white;
@@ -34,11 +32,14 @@
 }
 
 .notes-card{
-  background:rgb(255, 255, 255); 
+  background:white; 
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.timer-card{
+  background:rgb(255, 255, 255);
+}
 
 .no-scrollbar::-webkit-scrollbar {
     display: none;

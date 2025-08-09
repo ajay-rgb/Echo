@@ -6,9 +6,9 @@ export default function Header(){
     const {theme, toggleTheme} = useTheme();
 
     return(
-        <header className=" w-full h-[50px] flex flex-row items-center justify-between px-4 py-4 text-black rounded-tl-lg">
+        <header className="bg-white w-full h-[50px] flex flex-row items-center justify-between px-4 py-4 right-10 text-black rounded-tl-lg">
             
-        <h3 className='text-1xl w-fit text-[#09bc8a] font-bold'></h3>
+        <h3 className='text-1xl w-fit text-black font-bold'>ECHO</h3>
 
         <nav className='flex flex-row items-center '>
             {/* <button onClick={toggleTheme}

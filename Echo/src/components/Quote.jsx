@@ -14,7 +14,7 @@ export default function Quote() {
     <div className="rounded-lg w-full p-2">
       <blockquote>
         <p className="italic text-[10px] text-left text-black text-sm">"{quote.text}"</p>
-        <footer className="text-right mt-2 text-[10px] font-semibold text-xs">- {quote.author || 'Unknown'}</footer>
+        <footer className="text-right mt-2 text-[10px] text-black font-semibold text-xs">- {quote.author || 'Unknown'}</footer>
       </blockquote>
 
       <div className='flex flex-row justify-between items-center mt-8 p-2 border-t border-white'>

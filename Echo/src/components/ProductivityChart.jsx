@@ -61,16 +61,16 @@ export default function ProductivityChart() {
   const chartData = processData(sessions);
 
   return (
-    <div className="bg-[var(--cardclr)] flex flex-col items-center h-full w-full shadow-md rounded-lg p-4">
+    <div className=" flex flex-col items-center h-full w-full shadow-md rounded-lg p-4">
       {chartData.length > 0 ? (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" />
+            {/* <CartesianGrid strokeDasharray="3 3" /> */}
             <XAxis dataKey="name" stroke="black" />
             <YAxis stroke="white" />
-            <Tooltip contentStyle={{ backgroundColor: '#333', border: 'none' }} />
-            <Legend />
-            <Bar dataKey="minutes" fill="#8884d8" />
+            <Tooltip contentStyle={{ backgroundColor: '#b978feff', border: 'none' }} />
+            {/* <Legend   /> */}
+            <Bar dataKey="minutes" fill="#95d5b2" />
           </BarChart>
         </ResponsiveContainer>
       ) : (

@@ -51,7 +51,7 @@ export default function MonthlyHeatmap() {
   const monthDays = getMonthDays(currentDate);
 
   return (
-    <div className="w-full h-full bg-transparent p-4 rounded-lg shadow-md flex flex-col">
+    <div className="w-full h-full bg-white p-4 rounded-lg shadow-md flex flex-col">
       {/* Navigation */}
       <div className="flex justify-between items-center mb-4">
         <button
