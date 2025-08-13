@@ -7,7 +7,7 @@ export default function MyCalendar() {
     const[date, setDate] = useState(new Date());
 
     return (
-        <div className="bg-[var(--dark-bg)] rounded-lg  h-full w-full flex flex-col justify-between items-center">
+        <div className="bg-white rounded-lg  h-full w-full flex flex-col justify-between items-center">
 
            
                 <Calendar

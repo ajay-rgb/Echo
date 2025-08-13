@@ -3,7 +3,7 @@ import Notes from './Notes';
 
 export default function RightSidebar() {
   return (
-    <div className="  w-5/12 h-full flex flex-col gap-4 p-2 rounded-tr-lg rounded-br-lg">
+    <div className=" bg-white w-5/12 h-full flex flex-col gap-4 p-2 rounded-tr-lg rounded-br-lg">
       
       <div className="h-1/2">
         <Calendar />
