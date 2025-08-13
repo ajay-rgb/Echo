@@ -1,10 +1,9 @@
 # Echo
 
-<img width="1920" height="930" alt="image" src="https://github.com/user-attachments/assets/900bcc78-9a2b-4d0c-8b33-3ce623d384d7" />
+<img width="1920" height="929" alt="image" src="https://github.com/user-attachments/assets/a91418f4-466d-4eac-bf98-e599efee1911" />
 
 
 ### Your Personal Productivity Dashboard
-
 
 **Echo** is a full-stack MERN productivity application designed to help you track, understand, and optimize how you spend your time. By associating your work sessions with specific tasks, Echo transforms raw time data into powerful visualizations, giving you clear insights into your daily habits and overall productivity.
 
