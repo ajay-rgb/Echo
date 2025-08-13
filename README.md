@@ -1,7 +1,5 @@
 # Echo
 
-<img width="1919" height="926" alt="image" src="https://github.com/user-attachments/assets/c3a5a747-8c2a-46b3-b539-b6515fa76c69" />
-
 <img width="1917" height="934" alt="image" src="https://github.com/user-attachments/assets/f396368a-cb0d-446f-b1d8-4d1eacff063a" />
 
 ### Your Personal Productivity Dashboard
