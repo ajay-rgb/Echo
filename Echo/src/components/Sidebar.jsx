@@ -19,7 +19,7 @@ export default function Sidebar() {
                 `block p-2 rounded ${isActive ? 'font-bold bg-[var(--primary-txt)] ' : ''}`
               }
             >
-              <img className="w-[30px] hover:font-bold text-2xl" src="public/home.png" alt="Home" />
+              <img className="w-[30px] hover:font-bold text-2xl" src="/home.png" alt="Home" />
             </NavLink>
           </li>
           <li>
@@ -29,7 +29,7 @@ export default function Sidebar() {
                 `block p-2 rounded ${isActive ? 'font-bold bg-[var(--primary-txt)]' : ''}`
               }
             >
-              <img className="w-[30px] hover:font-bold text-2xl" src="public/info.png" alt="About" />
+              <img className="w-[30px] hover:font-bold text-2xl" src="/info.png" alt="About" />
             </NavLink>
           </li>
           {/* <li>
@@ -49,7 +49,7 @@ export default function Sidebar() {
                 `block p-2 rounded ${isActive ? 'font-bold bg-[var(--primary-txt)]' : ''}`
               }
             >
-              <img className="w-[30px] hover:font-bold text-2xl" src="public/user.png" alt="login" />
+              <img className="w-[30px] hover:font-bold text-2xl" src="/user.png" alt="login" />
             </NavLink>
           </li>
           <li>
@@ -59,7 +59,7 @@ export default function Sidebar() {
                 `block p-2 rounded ${isActive ? 'font-bold bg-[var(--primary-txt)]' : ''}`
               }
             >
-             <img className="w-[30px] hover:font-bold text-2xl" src="public/peeps.png" alt="Community" />
+             <img className="w-[30px] hover:font-bold text-2xl" src="/peeps.png" alt="Community" />
             </NavLink>
           </li>
         </ul>
