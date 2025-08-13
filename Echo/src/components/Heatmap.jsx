@@ -1,29 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import UserContext from "../context/UserContext"; // Import the UserContext
+import UserContext from "../context/UserContext";
 
 export default function MonthlyHeatmap() {
   const [data, setData] = useState({});
   const [currentDate, setCurrentDate] = useState(new Date());
   const apiUrl = import.meta.env.VITE_API_URL;
-  const { user } = useContext(UserContext); // Get the user from context
+  const { user } = useContext(UserContext); 
 
   useEffect(() => {
-    // Only fetch data if a user is logged in
     if (user) {
       const fetchData = async () => {
-        const token = localStorage.getItem('token'); // Get auth token
+        const token = localStorage.getItem('token'); 
         try {
-          // FIX 1: Correct API endpoint
           const result = await fetch(`${apiUrl}/api/sessions/heatmap`, {
             headers: {
-              // FIX 2: Add Authorization header
               'Authorization': `Bearer ${token}`
             }
           });
           const json = await result.json();
           
-          // Convert the array from the server into an object for easy lookup
           const dataObject = {};
           json.forEach(item => {
             const hours = item.count / (1000 * 60 * 60);
@@ -37,7 +33,7 @@ export default function MonthlyHeatmap() {
       };
       fetchData();
     }
-  }, [apiUrl, user, currentDate]); // Re-fetch if the month or user changes
+  }, [apiUrl, user, currentDate]); 
 
   const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
 
@@ -66,7 +62,6 @@ export default function MonthlyHeatmap() {
 
   const monthDays = getMonthDays(currentDate);
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
-  // Adjust for Sunday being 0
   const offset = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
 
   return (
@@ -88,11 +83,11 @@ export default function MonthlyHeatmap() {
       <div
         className="grid gap-1"
         style={{
-          // FIX 3: Use 7 columns for the days of the week
+          
           gridTemplateColumns: "repeat(7, 1fr)",
         }}
       >
-        {/* Empty cells for first day offset */}
+        
         {Array(offset).fill(null).map((_, idx) => (
           <div key={"empty-" + idx}></div>
         ))}
