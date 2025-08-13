@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import UserContext from "../context/UserContext";
+import UserContext from "../context/userContext";
 
-export default function MonthlyHeatmap() {
+export default function Heatmap() {
   const [data, setData] = useState({});
   const [currentDate, setCurrentDate] = useState(new Date());
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -65,7 +65,7 @@ export default function MonthlyHeatmap() {
   const offset = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
 
   return (
-    <div className="w-full h-full bg-white p-4 rounded-lg shadow-md flex flex-col">
+    <div className="w-full bg-white p-4 rounded-lg shadow-md flex flex-col">
       {/* Navigation */}
       <div className="flex justify-between items-center mb-4">
         <button onClick={goToPreviousMonth} className="p-2 rounded-full hover:bg-gray-200">
@@ -81,10 +81,9 @@ export default function MonthlyHeatmap() {
 
       {/* Heatmap */}
       <div
-        className="grid gap-1"
+        className="grid gap-2 flex-grow h-full"
         style={{
-          
-          gridTemplateColumns: "repeat(7, 1fr)",
+          gridTemplateColumns: "repeat(12, 1fr)", gridTemplateRows: "repeat(4,1fr)"
         }}
       >
         

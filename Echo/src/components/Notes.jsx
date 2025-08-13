@@ -92,8 +92,8 @@ export default function Notes() {
 
       <div className="flex-grow overflow-y-auto min-h-0 no-scrollbar">
         {notes.map((note) => (
-          <div key={note._id} className="flex items-center justify-between p-2 mb-2 font-bold border-b border-gray-800">
-            <p className="text-black break-words mr-2">{note.text}</p>
+          <div key={note._id} className="flex items-center justify-between p-2 mb-2  border-b border-gray-800">
+            <p className="text-black break-words  mr-2">{note.text}</p>
             <button className='text-black text-[12px]'
             onClick={()=>{handleDelete(note._id)}}
             ><FaTrash/></button>

@@ -95,7 +95,7 @@
   
 }
 .react-calendar__tile--active {
-  background: #09bc8a;
+  background:var(--primary-txt);
   color: white;
 }
 
