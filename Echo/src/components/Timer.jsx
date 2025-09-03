@@ -42,7 +42,7 @@ export default function Timer() {
     }
   };
   return (
-    <div className={`timer-card relative flex flex-col items-center justify-center h-full w-2/4 p-2  rounded-[10px]`}>
+    <div className={`timer-card relative flex flex-col items-center justify-center h-full w-2/4 p-2  rounded-md shadow-md bg-[var(--cardclr)] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
       
       {isOptionsOpen && (
         <div className="options-popup absolute h-auto w-60 z-10 bg-white p-4 flex flex-col justify-between items-center rounded-lg shadow-lg">

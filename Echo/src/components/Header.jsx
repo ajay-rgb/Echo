@@ -6,7 +6,7 @@ export default function Header(){
     const {theme, toggleTheme} = useTheme();
 
     return(
-        <header className="bg-white w-full h-[50px] flex flex-row items-center justify-between px-4 py-4 right-10 text-black rounded-tl-lg">
+        <header className="bg-[var(--color-1)] w-full h-[50px] flex flex-row items-center justify-between px-4 py-4 right-10 text-black ">
             
         <h3 className='text-1xl w-fit text-black font-bold'>ECHO</h3>
 

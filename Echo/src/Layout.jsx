@@ -1,4 +1,4 @@
-// src/Layout.jsx
+
 import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
@@ -11,7 +11,7 @@ export default function Layout() {
   const mainBgClass = theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100';
 
   const [timeStamp, setTimeStamp] = useState(() => {
-    // ... your localStorage logic ...
+
     const savedData = localStorage.getItem('myTimeStamps');
     return savedData ? JSON.parse(savedData) : [];
   });
@@ -32,13 +32,12 @@ export default function Layout() {
   const hideSidebarOn = ['/login', '/community', '/about', '/dashboard'];
 
   return (
-    <div className={`flex flex-row h-screen w-screen bg-[var(--dark-bg)] `}>
+    <div className={`flex flex-row h-screen w-screen bg-[var(--color-1)]${mainBgClass}`}>
       <Sidebar />
 
       <div className='flex flex-col w-full h-full'>
         <Header />
-        {/* The Outlet will render the current page (Home, About, etc.) */}
-        {/* We pass props to the pages via the context prop */}
+        
         <Outlet context={{
           timeStamp,
           handleAddTimeStamp,

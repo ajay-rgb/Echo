@@ -7,7 +7,7 @@ export default function Sidebar() {
   const mainBgClass = theme === 'dark' ? 'bg-[var(--dark-bg)] text-white' : 'bg-[var(--primary)] text-white';
 
   return (
-    <div className={`bg-white  h-full p-4  flex flex-col`}>
+    <div className={`bg-[var(--color-1)]  h-full p-4  flex flex-col`}>
    
 
       <div className="w-[30px] my-2 ">

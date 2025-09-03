@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Echo Focus",
+  "version": "1.0",
+  "description": "A Pomodoro timer and site blocker companion for the Echo app.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon16.png" 
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
