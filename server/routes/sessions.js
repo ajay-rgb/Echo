@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const Session = require('../models/Session');
 const auth = require('../middleware/auth');
 
@@ -27,7 +28,7 @@ router.post('/sessions', async (req, res) => {
 router.get('/sessions/heatmap', async (req, res) => {
   const userId = req.user.id;
   const data = await Session.aggregate([
-    { $match: { user: require('mongoose').Types.ObjectId(userId) } },
+    { $match: { user: new mongoose.Types.ObjectId(userId) } },
     {
       $group: {
         _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
