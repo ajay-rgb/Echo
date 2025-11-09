@@ -6,6 +6,7 @@ export default function Heatmap() {
   const [data, setData] = useState({});
   const [currentDate, setCurrentDate] = useState(new Date());
   const apiUrl = import.meta.env.VITE_API_URL;
+  const baseApi = (apiUrl || '').replace(/\/+$/, '');
   const { user } = useContext(UserContext); 
 
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function Heatmap() {
       const fetchData = async () => {
         const token = localStorage.getItem('token'); 
         try {
-          const result = await fetch(`${apiUrl}/api/sessions/heatmap`, {
+          const result = await fetch(`${baseApi}/api/sessions/heatmap`, {
             headers: {
               'Authorization': `Bearer ${token}`
             }

@@ -6,6 +6,7 @@ export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [input, setInput] = useState('');
   const apiUrl = import.meta.env.VITE_API_URL;
+  const baseApi = (apiUrl || '').replace(/\/+$/, '');
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function Notes() {
       const fetchNotes = async () => {
         const token = localStorage.getItem('token');
         try {
-          const response = await fetch(`${apiUrl}/api/notes`, {
+          const response = await fetch(`${baseApi}/api/notes`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           const data = await response.json();
@@ -32,7 +33,7 @@ export default function Notes() {
   const handleDelete = async (idToDelete) => {
     const token = localStorage.getItem('token');
     try {
-      await fetch(`${apiUrl}/api/notes/${idToDelete}`, {
+      await fetch(`${baseApi}/api/notes/${idToDelete}`, {
         method: 'DELETE',
         headers: {
           // FIX 1: Add the Authorization header
@@ -49,7 +50,7 @@ export default function Notes() {
     const token = localStorage.getItem('token');
     if (input.trim() === '') return;
     try {
-      const response = await fetch(`${apiUrl}/api/notes`, {
+      const response = await fetch(`${baseApi}/api/notes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

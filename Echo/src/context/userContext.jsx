@@ -9,6 +9,7 @@ const UserContext = createContext({
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
+  const baseApi = (apiUrl || '').replace(/\/+$|\/$/g, '').replace(/\/+$/, '');
 
   // This effect runs once when the app loads
   useEffect(() => {
@@ -16,7 +17,7 @@ export function UserProvider({ children }) {
     if (token) {
       const fetchUserProfile = async () => {
         try {
-          const response = await fetch(`${apiUrl}/api/profile`, {
+          const response = await fetch(`${baseApi}/api/profile`, {
             headers: {
               'Authorization': `Bearer ${token}`
             }
@@ -34,7 +35,7 @@ export function UserProvider({ children }) {
       };
       fetchUserProfile();
     }
-  }, [apiUrl]);
+  }, [baseApi]);
 
   const value = { user, setUser };
 

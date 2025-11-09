@@ -10,11 +10,12 @@ export default function Login() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
+  const baseApi = (apiUrl || '').replace(/\/+$/, '');
 
   const handleLogin = async () => {
     setMessage('');
     try {
-      const response = await fetch(`${apiUrl}/api/login`, {
+      const response = await fetch(`${baseApi}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -33,7 +34,7 @@ export default function Login() {
   const handleRegister = async () => {
     setMessage('');
     try {
-      const response = await fetch(`${apiUrl}/api/register`, {
+      const response = await fetch(`${baseApi}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

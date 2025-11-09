@@ -12,6 +12,7 @@ export default function Timer() {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [taskName, setTaskName] = useState('');
   const apiUrl = import.meta.env.VITE_API_URL;
+  const baseApi = (apiUrl || '').replace(/\/+$/, '');
 
   const handleSaveSession = async () => {
     // 4. Only proceed if a user is logged in
@@ -22,7 +23,7 @@ export default function Timer() {
 
     const token = localStorage.getItem('token');
     try {
-      await fetch(`${apiUrl}/api/sessions`, {
+      await fetch(`${baseApi}/api/sessions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
