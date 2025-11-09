@@ -6,10 +6,7 @@ export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [input, setInput] = useState('');
   const apiUrl = import.meta.env.VITE_API_URL;
-<<<<<<< HEAD
   const baseApi = (apiUrl || '').replace(/\/+$/, '');
-=======
->>>>>>> 544db4d3ffbb8d8f13dc4a19c5817d06f7bb63cd
   const { user } = useContext(UserContext);
 
   useEffect(() => {
