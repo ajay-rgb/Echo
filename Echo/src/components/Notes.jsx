@@ -5,7 +5,7 @@ import UserContext from '../context/userContext';
 export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [input, setInput] = useState('');
-  const apiUrl = 'https://psychic-giggle-6jgjvq55wqjf45r9-3000.app.github.dev';
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { user } = useContext(UserContext);
 
   useEffect(() => {
