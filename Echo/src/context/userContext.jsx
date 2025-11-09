@@ -10,7 +10,7 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
 
-  // This effect runs once when the app loads
+ 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -25,7 +25,7 @@ export function UserProvider({ children }) {
             const userData = await response.json();
             setUser(userData);
           } else {
-            // Token is invalid or expired
+            
             localStorage.removeItem('token');
           }
         } catch (error) {
