@@ -10,7 +10,7 @@ export default function Quote() {
   const [quote, setQuote] = useState(getRandomQuote());
 
   return (
-    // Removed unnecessary layout classes like h-full and flex-grow
+    
     <div className="rounded-lg w-full p-2">
       <blockquote>
         <p className="italic text-[10px] text-left text-black text-sm">"{quote.text}"</p>

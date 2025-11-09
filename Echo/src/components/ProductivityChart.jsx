@@ -1,17 +1,17 @@
 // src/components/ProductivityChart.jsx
-import React, { useState, useEffect, useContext } from 'react'; // 1. Import useContext
+import React, { useState, useEffect, useContext } from 'react'; 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import UserContext from '../context/userContext'; // 2. Import your UserContext
+import UserContext from '../context/userContext'; 
 
 export default function ProductivityChart() {
   const [sessions, setSessions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const apiUrl = import.meta.env.VITE_API_URL;
 
-  const { user } = useContext(UserContext); // 3. Get the user from context
+  const { user } = useContext(UserContext); 
 
   useEffect(() => {
-    // 4. Only fetch data if a user is logged in
+    
     if (user) {
       const fetchSessions = async () => {
         const token = localStorage.getItem('token');
@@ -34,9 +34,7 @@ export default function ProductivityChart() {
       setIsLoading(false);
       setSessions([]);
     }
-  }, [user, apiUrl]); // 5. Re-run the effect if the user logs in or out
-
-  // This function processes the raw session data for the chart
+  }, [user, apiUrl]); 
   const processData = (sessions) => {
     const taskTotals = {};
     sessions.forEach(session => {

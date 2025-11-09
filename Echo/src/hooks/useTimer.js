@@ -1,7 +1,7 @@
 // src/hooks/useTimer.js
 import { useState, useEffect } from 'react';
 
-// A custom hook is just a function that uses other hooks.
+
 export function useTimer(onResetCallback) {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -23,7 +23,7 @@ export function useTimer(onResetCallback) {
   };
 
   const handleReset = () => {
-    // If a callback was passed, call it with the formatted time
+    
     if (onResetCallback) {
       onResetCallback(formatTime(time));
     }
@@ -40,6 +40,5 @@ export function useTimer(onResetCallback) {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${String((time % 1000) / 10).padStart(2, '0')}`;
   };
 
-  // Return the state and functions the component will need
   return { time, isRunning, handleStartStop, handleReset, formatTime };
 }

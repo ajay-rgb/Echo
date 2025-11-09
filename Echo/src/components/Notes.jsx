@@ -6,7 +6,10 @@ export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [input, setInput] = useState('');
   const apiUrl = import.meta.env.VITE_API_URL;
+<<<<<<< HEAD
   const baseApi = (apiUrl || '').replace(/\/+$/, '');
+=======
+>>>>>>> 544db4d3ffbb8d8f13dc4a19c5817d06f7bb63cd
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export default function Notes() {
       };
       fetchNotes();
     } else {
-      // FIX 2: Clear notes when the user logs out
+      
       setNotes([]);
     }
   }, [user]);
@@ -36,7 +39,7 @@ export default function Notes() {
       await fetch(`${baseApi}/api/notes/${idToDelete}`, {
         method: 'DELETE',
         headers: {
-          // FIX 1: Add the Authorization header
+          
           'Authorization': `Bearer ${token}`
         }
       });
@@ -60,7 +63,7 @@ export default function Notes() {
       });
       const newNote = await response.json();
       setNotes(prevNote => [newNote, ...prevNote]);
-      setInput(''); // Clear input after successful add
+      setInput(''); 
     } catch (error) {
       console.error("Failed to add note:", error);
     }
