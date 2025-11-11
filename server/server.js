@@ -44,7 +44,10 @@ async function start() {
     process.exit(1);
   }
   try {
-    await mongoose.connect(mongoUri, { dbName: undefined });
+    await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+    });
     console.log('MongoDB connected');
     app.listen(PORT, () => console.log(`Server listening on :${PORT}`));
   } catch (err) {

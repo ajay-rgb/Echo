@@ -8,11 +8,11 @@
   color-scheme: light dark;
   background: #ffffff;
   --color-1:white;
-  --color-2: #b7e4c7; /* Secondary background color */
+  --color-2: #e8f4f8; /* Light blue background color */
   --primary: #151415; /* Primary color */
   --secondary: #151415; /* Secondary color */ /* Text color */
   --dark-bg:#eeeeee;
-  --card: #b7e4c7;
+  --card: #e8f4f8;
   --primary-txt:#3dac78;
 }
 
