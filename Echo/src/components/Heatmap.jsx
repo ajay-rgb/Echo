@@ -5,6 +5,8 @@ import UserContext from "../context/userContext";
 export default function Heatmap() {
   const [data, setData] = useState({});
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
   const baseApi = (apiUrl || '').replace(/\/+$/, '');
   const { user } = useContext(UserContext); 
@@ -12,6 +14,8 @@ export default function Heatmap() {
   useEffect(() => {
     if (user) {
       const fetchData = async () => {
+        setIsLoading(true);
+        setError(null);
         const token = localStorage.getItem('token'); 
         try {
           const result = await fetch(`${baseApi}/api/sessions/heatmap`, {
@@ -19,6 +23,11 @@ export default function Heatmap() {
               'Authorization': `Bearer ${token}`
             }
           });
+
+          if (!result.ok) {
+            throw new Error('Failed to fetch heatmap data');
+          }
+
           const json = await result.json();
           
           const dataObject = {};
@@ -30,9 +39,14 @@ export default function Heatmap() {
 
         } catch (error) {
           console.error("Failed to fetch heatmap data:", error);
+          setError("Failed to load heatmap data");
+        } finally {
+          setIsLoading(false);
         }
       };
       fetchData();
+    } else {
+      setIsLoading(false);
     }
   }, [apiUrl, user, currentDate]); 
 
@@ -65,6 +79,22 @@ export default function Heatmap() {
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
   const offset = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
 
+  if (isLoading) {
+    return (
+      <div className="w-full bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-64">
+        <div className="text-gray-500">Loading heatmap...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-64">
+        <div className="text-red-500">{error}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full bg-white p-4 rounded-lg shadow-md flex flex-col">
       {/* Navigation */}
@@ -82,7 +112,7 @@ export default function Heatmap() {
 
       {/* Heatmap */}
       <div
-        className="grid gap-2 flex-grow h-full"
+        className="grid gap-2 grow h-full"
         style={{
           gridTemplateColumns: "repeat(12, 1fr)", gridTemplateRows: "repeat(4,1fr)"
         }}

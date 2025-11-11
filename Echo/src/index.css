@@ -143,3 +143,89 @@
 .react-calendar-heatmap .color-scale-2 { fill: #8cc665; }
 .react-calendar-heatmap .color-scale-3 { fill: #44a340; }
 .react-calendar-heatmap .color-scale-4 { fill: #1e6823; }
+
+/* Mobile Responsive Improvements */
+@media (max-width: 640px) {
+  /* Timer controls - larger touch targets */
+  .timer-card {
+    width: 100% !important;
+    min-height: 300px;
+  }
+
+  .timer-card h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .timer-card button {
+    min-height: 56px;
+    font-size: 1.125rem;
+    padding: 12px 16px;
+  }
+
+  /* Charts - scrollable on mobile */
+  .chart-container {
+    overflow-x: auto;
+    min-width: 100%;
+  }
+
+  /* Session list - better spacing */
+  .session-card {
+    padding: 12px;
+  }
+
+  /* Options popup - full width on mobile */
+  .options-popup {
+    width: calc(100% - 32px) !important;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Tablet adjustments */
+  .timer-card {
+    width: 100% !important;
+  }
+
+  /* Stack layout on smaller screens */
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Success notification animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+/* Better focus states for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary-txt);
+  outline-offset: 2px;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--primary-txt);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -7,7 +7,7 @@ export default function Home() {
  
 
   return (
-    <div className='flex flex-col flex-grow p-4 gap-4 min-h-0 rounded-lg bg-[var(--color-2)]'>
+    <div className='flex flex-col grow p-4 gap-4 min-h-0 rounded-lg bg-(--color-2)'>
 
     
       <div className='flex flex-row justify-center items-center gap-4 h-1/2'>

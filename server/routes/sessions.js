@@ -41,4 +41,52 @@ router.get('/sessions/heatmap', async (req, res) => {
   res.json(data);
 });
 
+// PUT /api/sessions/:id - Update a session
+router.put('/sessions/:id', async (req, res) => {
+  try {
+    const { task, duration } = req.body || {};
+    const updateData = {};
+    
+    if (task !== undefined) updateData.task = task;
+    if (duration !== undefined) {
+      if (typeof duration !== 'number' || duration < 0) {
+        return res.status(400).json({ message: 'duration must be a positive number' });
+      }
+      updateData.duration = duration;
+    }
+
+    const session = await Session.findOneAndUpdate(
+      { _id: req.params.id, user: req.user.id },
+      updateData,
+      { new: true }
+    );
+
+    if (!session) {
+      return res.status(404).json({ message: 'Session not found' });
+    }
+
+    res.json(session);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to update session' });
+  }
+});
+
+// DELETE /api/sessions/:id - Delete a session
+router.delete('/sessions/:id', async (req, res) => {
+  try {
+    const session = await Session.findOneAndDelete({
+      _id: req.params.id,
+      user: req.user.id
+    });
+
+    if (!session) {
+      return res.status(404).json({ message: 'Session not found' });
+    }
+
+    res.json({ message: 'Session deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to delete session' });
+  }
+});
+
 module.exports = router;

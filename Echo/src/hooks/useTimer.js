@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 export function useTimer(onResetCallback) {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     let id;
@@ -20,6 +21,19 @@ export function useTimer(onResetCallback) {
 
   const handleStartStop = () => {
     setIsRunning(!isRunning);
+    if (!isRunning) {
+      setIsPaused(false);
+    }
+  };
+
+  const handlePause = () => {
+    setIsRunning(false);
+    setIsPaused(true);
+  };
+
+  const handleResume = () => {
+    setIsRunning(true);
+    setIsPaused(false);
   };
 
   const handleReset = () => {
@@ -29,6 +43,7 @@ export function useTimer(onResetCallback) {
     }
     setTime(0);
     setIsRunning(false);
+    setIsPaused(false);
   };
   
   const formatTime = (time) => {
@@ -40,5 +55,5 @@ export function useTimer(onResetCallback) {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${String((time % 1000) / 10).padStart(2, '0')}`;
   };
 
-  return { time, isRunning, handleStartStop, handleReset, formatTime };
+  return { time, isRunning, isPaused, handleStartStop, handlePause, handleResume, handleReset, formatTime };
 }
